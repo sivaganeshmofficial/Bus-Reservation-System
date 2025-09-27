@@ -6,12 +6,16 @@ public class Reservation {
     private User user;
     private Bus bus;
     private int seatNumber;
+    private String pickup;
+    private String drop;
 
-    public Reservation(int reservationId, User user, Bus bus, int seatNumber) {
+    public Reservation(int reservationId, User user, Bus bus, int seatNumber,String pickup,String drop) {
         this.reservationId = reservationId;
         this.user = user;
         this.bus = bus;
         this.seatNumber = seatNumber;
+        this.pickup = pickup;
+        this.drop = drop;
     }
 
     public int getReservationId() {
@@ -42,14 +46,17 @@ public class Reservation {
         this.seatNumber = seatNumber;
     }
 
+
     @Override
     public String toString() {
-        return " Reservation { " +
-                "reservationId = " + reservationId +
-                ", user = " + user +
-                ", bus = " + bus +
-                ", seatNumber = " + seatNumber +
-                " }";
+        return "Reservation{" +
+                "reservationId=" + reservationId +
+                ", user=" + user +
+                ", bus=" + bus +
+                ", seatNumber=" + seatNumber +
+                ", pickup='" + pickup + '\'' +
+                ", drop='" + drop + '\'' +
+                '}';
     }
 }
 

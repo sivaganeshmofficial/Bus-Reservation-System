@@ -25,14 +25,25 @@ public class ReservationSystem {
     }
 
     public void displayBuses() {
+        if(buses.isEmpty()) {
+            System.out.println("No Bus Available");
+            return;
+        }
         for(Bus bus : buses) {
             System.out.println(bus);
         }
     }
 
-    public void displayUsers() {
-        for(User user : users) {
-            System.out.println(user);
+    public void displayUsers(int busId) {
+        boolean found = false;
+        for (Reservation r : reservations) {
+            if(r.getBus().getBusId() == busId) {
+                System.out.println(r.getUser());
+                found = true;
+            }
+        }
+        if(!found) {
+            System.out.println("No Users Reserved For This Bus");
         }
     }
 
@@ -46,11 +57,11 @@ public class ReservationSystem {
         return bus.getCapacity() - bookedSeats;
     }
 
-    public void bookSeat(User user, Bus bus) {
+    public void bookSeat(User user, Bus bus,String b,String d) {
         int availableSeats = getAvailableSeats(bus);
         if(availableSeats > 0) {
             int seatNumber = bus.getCapacity() - availableSeats + 1;
-            Reservation reservation = new Reservation(reservationCounter++,user,bus,seatNumber);
+            Reservation reservation = new Reservation(reservationCounter++,user,bus,seatNumber,b,d);
             reservations.add(reservation);
             System.out.println("Reservation Confirmed " + reservation);
         }else{
@@ -61,6 +72,7 @@ public class ReservationSystem {
     public void displayReservations() {
         if(reservations.isEmpty()) {
             System.out.println("No Reservation Available");
+            return;
         }
         else{
             for(Reservation r : reservations ) {
@@ -96,6 +108,10 @@ public class ReservationSystem {
 
     public List<User> getUsers() {
         return users;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 }
 

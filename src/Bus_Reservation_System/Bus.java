@@ -1,5 +1,8 @@
 package Bus_Reservation_System;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bus {
 
     private final int busId;
@@ -7,13 +10,17 @@ public class Bus {
     private String source;
     private String destination;
     private final int capacity;
+    List<String> boardingPoints;
+    List<String> droppingPoints;
 
-    public Bus(int busId, String busName, String source, String destination, int capacity) {
+    public Bus(int busId, String busName, String source, String destination, int capacity, ArrayList<String> boardingPoints, ArrayList<String> droppingPoints) {
         this.busId = busId;
         this.busName = busName;
         this.source = source;
         this.destination = destination;
         this.capacity = capacity;
+        this.boardingPoints = boardingPoints;
+        this.droppingPoints = droppingPoints;
     }
 
     public int getBusId() {
@@ -50,13 +57,15 @@ public class Bus {
 
     @Override
     public String toString() {
-        return "Bus { " +
-                "busId = " + busId +
-                ", busName = '" + busName + '\'' +
-                ", source = '" + source + '\'' +
-                ", destination = '" + destination + '\'' +
-                ", capacity = " + capacity +
-                " }";
+        return "Bus{" +
+                "busId=" + busId +
+                ", busName='" + busName + '\'' +
+                ", source='" + source + '\'' +
+                ", destination='" + destination + '\'' +
+                ", capacity=" + capacity +
+                ", boardingPoints=" + boardingPoints +
+                ", droppingPoints=" + droppingPoints +
+                '}';
     }
 }
 

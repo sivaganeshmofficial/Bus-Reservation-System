@@ -5,11 +5,13 @@ public class User {
     private final int  userId;
     private String userName;
     private String idProof;
+    private String password;
 
-    public User(int userId, String userName, String idProof) {
+    public User(int userId, String userName, String idProof,String password) {
         this.userId = userId;
         this.userName = userName;
         this.idProof = idProof;
+        this.password = password;
     }
 
     public int getUserId() {
@@ -30,6 +32,14 @@ public class User {
 
     public void setIdProof(String proof) {
         this.idProof = proof;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean validatePassword(String inpPassword) {
+        return this.password.equals(inpPassword);
     }
 
     @Override
